@@ -8,7 +8,6 @@ import by.epam.onlineShop.service.validator.impl.NameValidatorImpl;
 import by.epam.onlineShop.service.validator.impl.PhoneValidatorImpl;
 import by.epam.onlineShop.service.validator.impl.PriceValidatorImpl;
 import by.epam.onlineShop.service.validator.impl.YearValidatorImpl;
-import by.epam.onlineShop.service.validator.impl.DiscountValidatorImpl;
 import by.epam.onlineShop.service.validator.impl.IdValidatorImpl;
 
 public class ValidatorFactory {
@@ -21,7 +20,6 @@ public class ValidatorFactory {
     private final YearValidatorImpl yearValidator = new YearValidatorImpl();
     private final PriceValidatorImpl priceValidator = new PriceValidatorImpl();
     private final IdValidatorImpl idValidator = new IdValidatorImpl();
-    private final DiscountValidatorImpl discountValidator = new DiscountValidatorImpl();
 
     public static ValidatorFactory getInstance() {
         return Holder.INSTANCE;
@@ -61,10 +59,6 @@ public class ValidatorFactory {
 
     public IdValidatorImpl getIdValidator() {
         return idValidator;
-    }
-
-    public DiscountValidatorImpl getDiscountValidator() {
-        return discountValidator;
     }
 
     private static class Holder {

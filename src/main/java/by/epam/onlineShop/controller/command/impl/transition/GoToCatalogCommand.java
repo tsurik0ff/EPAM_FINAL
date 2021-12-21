@@ -14,6 +14,7 @@ import by.epam.onlineShop.service.ServiceFactory;
 
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class GoToCatalogCommand implements Command {
     private static final String CATEGORY_ID = "categoryId";
     private static final String CATEGORIES = "categories";
     private static final String PRODUCTS = "products";
-    private static final String COLOR = "colorName";
+    private static final String COLOR = "color";
     private static final String SIZE = "productSize";
     private static final String COLORS = "colors";
     private static final String SIZES = "sizes";
@@ -34,6 +35,7 @@ public class GoToCatalogCommand implements Command {
     public CommandResult execute(RequestContextHelper helper, HttpServletResponse response) {
         RequestContext requestContext = helper.createContext();
 
+
         try {
             CategoryService categoryService = ServiceFactory.getInstance().getCategoryService();
 
@@ -42,30 +44,27 @@ public class GoToCatalogCommand implements Command {
 
             long categoryId = Long.parseLong(requestContext.getRequestParameter(CATEGORY_ID));
 
-            //String colorName = requestContext.getRequestParameter(COLOR);
             //String productSize = requestContext.getRequestParameter(SIZE);
-
 
             ProductService productService = ServiceFactory.getInstance().getProductService();
 
             List<Product> products = productService.retrieveProductsByCategory(categoryId);
 
-            List<String> colors = categoryService.retrieveProductsColorsInCategory(products);
+            //List<String> colors = productService.retrieveProductsColors(categoryId);
+
             //List<String> sizes = categoryService.retrieveProductsSizesInCategory(products);
 
-            requestContext.addRequestAttribute(COLORS, colors);
-            /*
-            requestContext.addRequestAttribute(SIZES, sizes);
+            //requestContext.addRequestAttribute(SIZES, sizes);
 
-            List<Product> colorProducts = productService.retrieveProductsByColor(colorName);
-            List<Product> sizeProducts = productService.retrieveProductsBySize(productSize);
+            //String colorName = requestContext.getRequestParameter("color");
 
-            requestContext.addRequestAttribute(PRODUCTS_BY_COLOR, colorProducts);
-            requestContext.addRequestAttribute(PRODUCTS_BY_SIZE, sizeProducts);
+            //List<Product> sizeProducts = productService.retrieveProductsBySize(productSize);
 
-             */
+            //requestContext.addRequestAttribute(PRODUCTS_BY_SIZE, sizeProducts);
+
             requestContext.addRequestAttribute(PRODUCTS, products);
 
+           // requestContext.addRequestAttribute(COLORS, colors);
 
         } catch (ServiceException e) {
             return new CommandResult(ERROR_PAGE, CommandResultType.FORWARD);

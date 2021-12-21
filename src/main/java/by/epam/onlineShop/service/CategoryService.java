@@ -35,6 +35,7 @@ public interface CategoryService {
      */
     List<String> retrieveProductsColorsInCategory(List<Product> products) throws ServiceException;
 
+
     /**
      * Method to retrieve products by color
      *

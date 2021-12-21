@@ -38,13 +38,13 @@ public interface ProductService {
     List<Product> retrieveProductsByColor(String color) throws ServiceException;
 
     /**
-     * Method to retrieve products by color
+     * Method to retrieve products colors
      *
-     * @param products of products to retrieve
-     * @return List of Product
+     * @param categoryId of products to retrieve
+     * @return List of String
      * @throws ServiceException
      */
-    List<String> retrieveProductsColors(List<Product> products) throws ServiceException;
+    List<String> retrieveProductsColors(long categoryId) throws ServiceException;
 
     /**
      * Method to retrieve products by color

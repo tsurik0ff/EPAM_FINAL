@@ -24,17 +24,7 @@
             <fmt:message bundle="${loc}" key="language.productAddedToBasket"/>
         </div>
     </c:if>
-    <c:if test="${2+1==3}">
-        <select class="inputRegBox" name="country" size="1" maxlength=30 >
-            <option value="White"></option>
-            <option value="Grey"></option>
-            <%--
-            <c:forEach var="color" items="${colors}">
-                <option value="${color}"></option>
-            </c:forEach>
-            --%>
-        </select>
-    </c:if>
+
     <c:forEach var="product" items="${products}">
         <div class="my-lg-4">
             <div class="col-6"></div>

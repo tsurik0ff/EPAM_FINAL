@@ -9,7 +9,7 @@
             <PatternLayout pattern="${property_console}"/>
         </Console>
         <File name="File" fileName="logs/online-shop.log" append="true"
-              filePattern="logs/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}.txt">
+              filePattern="/logs/$${date:yyyy-MM}/server-%d{yyyy-MM-dd-HH}-%i.log.txt">
             <PatternLayout pattern="${property_file}"/>
         </File>
     </Appenders>

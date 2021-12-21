@@ -34,6 +34,7 @@ public class CommandFactory {
         commands.put(CommandName.EDIT_PRODUCT_COMMAND, new GoToEditProductCommand());
         commands.put(CommandName.CONFIRM_EDIT_PRODUCT, new ConfirmProductChangeCommand());
         commands.put(CommandName.CONFIRM_DELETE_PRODUCT, new ConfirmProductDeleteCommand());
+        //commands.put(CommandName.SELECT_COLOR_COMMAND, new ChooseColorCommand());
     }
 
     public static CommandFactory getInstance() {

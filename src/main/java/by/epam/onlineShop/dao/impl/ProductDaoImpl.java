@@ -7,11 +7,13 @@ import by.epam.onlineShop.dao.mapper.RowMapperFactory;
 import by.epam.onlineShop.entity.Product;
 import by.epam.onlineShop.exeptions.DaoException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class ProductDaoImpl extends AbstractDao<Product> implements ProductDao {
     private static final String FIND_PRODUCTS_BY_CATEGORY_ID_QUERY = "SELECT * FROM " + Table.PRODUCT + " WHERE category_id=?";
+    private static final String FIND_COLORS_BY_CATEGORY_ID_QUERY = "SELECT DISTINCT(color) FROM " + Table.PRODUCT + " WHERE category_id=?";
     private static final String FIND_PRODUCT_BY_NAME_QUERY = "SELECT * FROM " + Table.PRODUCT + " WHERE name=?";
     private static final String FIND_PRODUCT_BY_COLOR_QUERY = "SELECT * FROM " + Table.PRODUCT + " WHERE color=?";
     private static final String FIND_PRODUCT_BY_SIZE_QUERY = "SELECT * FROM " + Table.PRODUCT + " WHERE productsize=?";
@@ -28,6 +30,16 @@ public class ProductDaoImpl extends AbstractDao<Product> implements ProductDao {
     @Override
     public List<Product> findByCategory(long categoryId) throws DaoException {
         return executeQuery(FIND_PRODUCTS_BY_CATEGORY_ID_QUERY, categoryId);
+    }
+
+    @Override
+    public List<String> findColorsByCategory(long categoryId) throws DaoException {
+        List<Product> products = executeQuery(FIND_COLORS_BY_CATEGORY_ID_QUERY, categoryId);
+        List<String> colors = new ArrayList<>();
+            for(Product product:products){
+                colors.add(product.getColor());
+            }
+        return colors;
     }
 
     @Override

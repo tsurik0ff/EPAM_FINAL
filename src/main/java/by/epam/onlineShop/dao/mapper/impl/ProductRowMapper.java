@@ -18,7 +18,8 @@ public class ProductRowMapper implements RowMapper<Product> {
         product.setDescription(resultSet.getString(Column.PRODUCT_DESCRIPTION));
         product.setPrice(resultSet.getDouble(Column.PRODUCT_PRICE));
         product.setStatus(resultSet.getBoolean(Column.PRODUCT_STATUS));
-        product.setStatus(resultSet.getBoolean(Column.PRODUCT_STATUS));
+        product.setColor(resultSet.getString(Column.PRODUCT_COLOR));
+        product.setProductSize(resultSet.getString(Column.PRODUCT_SIZE));
         product.setPhoto(resultSet.getString(Column.PRODUCT_PHOTO));
         product.setOrdersNumber(resultSet.getLong(Column.ORDERS_NUMBER));
         return product;

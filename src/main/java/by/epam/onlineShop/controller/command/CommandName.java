@@ -26,4 +26,5 @@ public final class CommandName {
     public static final String CONFIRM_EDIT_PRODUCT = "confirmEditProduct";
     public static final String DELETE_PRODUCT_COMMAND = "deleteProduct";
     public static final String CONFIRM_DELETE_PRODUCT = "confirmDeleteProduct";
+    public static final String SELECT_COLOR_COMMAND = "selectColor";
 }

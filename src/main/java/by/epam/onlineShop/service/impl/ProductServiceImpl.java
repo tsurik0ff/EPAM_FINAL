@@ -63,12 +63,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<String> retrieveProductsColors(List<Product> products) throws ServiceException {
-        List<String> colors = null;
-        for(Product product : products){
-            colors.add(product.getColor());
+    public List<String> retrieveProductsColors(long categoryId) throws ServiceException {
+        try {
+            ProductDao productDao = DaoFactory.getInstance().getProductDao();
+
+            List<String> result = productDao.findColorsByCategory(categoryId);
+            return result;
+        } catch (DaoException e) {
+            logger.error("Unable to retrieve products by category!");
+            throw new ServiceException(e.getMessage(), e);
         }
-        return colors;
     }
 
     @Override

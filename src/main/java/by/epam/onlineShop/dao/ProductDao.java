@@ -17,6 +17,8 @@ public interface ProductDao extends Dao<Product> {
      */
     List<Product> findByCategory(long categoryId) throws DaoException;
 
+    List<String> findColorsByCategory(long categoryId) throws DaoException;
+
     /**
      * Method to get product by name from data base
      *

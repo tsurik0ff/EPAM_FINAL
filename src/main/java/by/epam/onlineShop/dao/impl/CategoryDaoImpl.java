@@ -12,6 +12,8 @@ import java.util.Optional;
 public class CategoryDaoImpl extends AbstractDao<Category> implements CategoryDao {
     private static final String SAVE_CATEGORY_QUERY = "INSERT INTO " + Table.CATEGORY + " (category) VALUES (?)";
     private static final String FIND_CATEGORY_BY_NAME_QUERY = "SELECT * FROM " + Table.CATEGORY + " WHERE category=?";
+    private static final String FIND_COLORS_BY_CATEGORY_ID_QUERY = "SELECT DISTINCT(color) FROM " + Table.PRODUCT + " WHERE category_id=?";
+
 
     public CategoryDaoImpl() {
         super(RowMapperFactory.getInstance().getCategoryRowMapper(), Table.CATEGORY);
